@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
-import kotlin.math.sin
 
 @Composable
 fun TransparentHintTextField(
@@ -21,6 +21,7 @@ fun TransparentHintTextField(
     onValueChange: (String) -> Unit,
     textStyle: TextStyle = TextStyle(),
     singleLine: Boolean = false,
+    testTag: String = "",
     onFocusChange: (FocusState) -> Unit
 ) {
     Box(
@@ -36,6 +37,7 @@ fun TransparentHintTextField(
                 .onFocusChanged {
                     onFocusChange(it)
                 }
+                .testTag(testTag)
         )
         if (isHintVisible) {
             Text(text = hint, style = textStyle, color = Color.DarkGray)
